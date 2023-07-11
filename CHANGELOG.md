@@ -2,8 +2,20 @@
 
 - `permute` will be a wrapper around to `QuantumInterface.permutesubsystems`. Documentation for `permute!` would be similarly updated
 - reworking the rest of `NoisyCircuits` and moving it out of `Experimental`
+- some support for T gates and other non-clifford behavior
 
 # News
+
+## v0.8.11 - 2023-07-10
+
+- `petrajectories`, for (potentially symbolic) perturbative expansions of the result of a circuit, is moved out of `Experimental` into the public part of the interface. The underlying `petrajectory` is not made public yet due to the ad-hoc low-level return conventions for it.
+- `mctrajectory` and `petrajectory` can now optionally report the end state of each trajectory, not just the circuit status (i.e. "success", "detected failure", etc).
+- Internally we now use a trait system to distinguish deterministic from non-deterministic operations. Not part of the public API yet.
+
+## v0.8.10 - 2023-07-05
+
+- Remove Polyester.jl multithreading, leading to simpler and better compiled single-thread code. Now single-thread performance is much higher. Multithreading was generally not useful at the inner loops where it was deployed.
+- Implement `fastcolumn` and `fastrow`, which transform a tableau into a memory layout optimized for column or row operations.
 
 ## v0.8.9 - 2023-07-04
 
